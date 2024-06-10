@@ -38,7 +38,7 @@ useEffect(()=>{
   
     <>
      <div className='container-box'>
-              <center><h1>AutoSuggestion / Typeahead</h1></center>
+              <center><h1>Type for AutoSuggestion</h1></center>
             
              <Autocomplete placeholder={'Search here'} 
               // staticData={staticData} 
