@@ -5,6 +5,7 @@ import './App.css'
 import Autocomplete from './components/Autocomplete'
 import Showdata from './components/Showdata'
 import './components/styles.css'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -53,7 +54,11 @@ useEffect(()=>{
     <div className='showdata'>
         <Showdata data={data}/> 
     </div>
-             
+       
+          <span className='footer'>
+             <Footer/> 
+          </span>
+        
     </div>
     
     </>
