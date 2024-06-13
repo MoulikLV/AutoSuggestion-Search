@@ -131,7 +131,7 @@ const Autocomplete = ({
         
     />
     
-    {inputValue && (<span className="clear-icon" onClick={handleClear}>x</span>)}
+    {inputValue && (<span className="clear-icon" onClick={handleClear}>X</span>)}
    
    
    

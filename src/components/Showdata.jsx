@@ -2,22 +2,39 @@ import React from 'react'
 
 import './styles.css'
 
-const Showdata = ({data}) => {
+const Showdata = ({data,setData}) => {
+
+  
+
+
+  const handleCleardata=()=>{
+    setData([])
+  }
 
     const dataArray= Array.isArray(data)? data : [data]
 
   return (
-    <div>
+    <>
+      <div>
        {dataArray && dataArray.map((item,index)=>{
         return (
-           <div key={index}>
-            <p>{item.name}</p>
-            <img className='item-image' src={item.image}/>
+          <>
+            <div className='showdata'>
+            <div key={index}>
+            <p>Name : {item.name}</p>
+            <img className='item-image' src={item.image} alt={'Loading image..'}/> 
            </div>
+           
+            <span className='cleardata' onClick={handleCleardata}>Clear Data</span>
+            </div>
+           
+          </>
         )
        })
        }
     </div>
+   
+    </>
   )
 }
 

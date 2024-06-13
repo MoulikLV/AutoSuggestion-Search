@@ -13,6 +13,8 @@ function App() {
 
   const [data,setData]=useState([])
 
+ 
+
   const inputref=useRef(null)
    
 const fetchSuggestions=async(query)=>{
@@ -51,8 +53,8 @@ useEffect(()=>{
               customStyles={{}}
               inputref={inputref}/>
 
-    <div className='showdata'>
-        <Showdata data={data}/> 
+    <div>
+       {data && <Showdata data={data} setData={setData}/> }
     </div>
        
           <span className='footer'>
