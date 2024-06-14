@@ -21,6 +21,10 @@ const Autocomplete = ({
     const [suggestions,setSuggestions]=useState([])
     const [loading,setLoading]=useState(false)
     const [notFound, setNotFound] = useState(false);
+
+    const [searchValue,setSearchValue]=useState('')
+
+    const originaltitle=useRef(document.title)
     
     console.log(suggestions)
 
@@ -60,8 +64,9 @@ const Autocomplete = ({
     
     const handleonselectclick=(suggestion)=>{
       
-            const selectedval=dataKey?suggestion[dataKey]:suggestion
-            setInputValue(selectedval)
+            const selectedsugg=dataKey?suggestion[dataKey]:suggestion
+            setInputValue(selectedsugg)
+            setSearchValue(selectedsugg)
             setSuggestions([])
             inputChangeRef.current=false
             onSelect(suggestion)
@@ -74,6 +79,7 @@ const Autocomplete = ({
     const handleClear=()=>{
         setInputValue('')
         setSuggestions([])
+        setSearchValue('')
         // setNotFound(false)
         inputref.current.focus()
         localStorage.removeItem('inputval')
@@ -84,7 +90,13 @@ const Autocomplete = ({
     const getSuggestionDebounce=useCallback(debounce(getSuggestions,300),[]);
 
    
-
+    useEffect(()=>{
+        if(searchValue){
+            document.title=`${searchValue}`
+        }else{
+             document.title=originaltitle.current
+        }
+    },[inputValue])
 
    useEffect(()=>{
        if(inputValue.length>1 && inputChangeRef.current){
